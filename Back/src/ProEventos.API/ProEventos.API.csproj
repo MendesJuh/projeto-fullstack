@@ -21,4 +21,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProEventos.Application\ProEventos.Application.csproj" />
+    <ProjectReference Include="..\ProEventos.Persistence\ProEventos.Persistence.csproj" />
+    <ProjectReference Include="..\ProEventos.Domain\ProEventos.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
