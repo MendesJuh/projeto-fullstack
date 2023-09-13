@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain;
 
-namespace ProEventos.Persistence
+namespace ProEventos.Persistence.Contextos
 {
     public class ProEventosContext  : DbContext 
     {
@@ -23,6 +23,16 @@ namespace ProEventos.Persistence
         {
             modelBuilder.Entity<PalestranteEvento>()
             .HasKey(PE => new {PE.EventoId, PE.PalestranteId});
+
+             modelBuilder.Entity<Evento>()
+            .HasMany(e => e.RedesSociais)
+            .WithOne(rs => rs.Evento)
+            .OnDelete(DeleteBehavior.Cascade);
+
+              modelBuilder.Entity<Palestrante>()
+            .HasMany(e => e.RedesSociais)
+            .WithOne(rs => rs.Palestrante)
+            .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
